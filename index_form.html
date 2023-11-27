@@ -8,7 +8,7 @@
 <body>
     <h1>Symptom Prediction Form</h1>
     
-    <form id="symptomForm">
+    <form id="symptomForm" action="/predict" method="POST">
         <label><input type="checkbox" id="symptom1" name="symptoms" value="1"> Itching</label>
         <label><input type="checkbox" id="symptom2" name="symptoms" value="1"> Skin Rash</label>
         <label><input type="checkbox" id="symptom3" name="symptoms" value="1"> Nodal Skin Eruptions</label>
@@ -149,17 +149,17 @@
         function predict() {
             // Get all checkbox elements
             const checkboxes = document.getElementsByName("symptoms");
-
+    
             // Create an array to store symptom data (initialized with zeros)
             let input_data = Array(132).fill(0);
-
+    
             // Update the array based on checked symptoms
             checkboxes.forEach((checkbox, index) => {
                 if (checkbox.checked) {
                     input_data[index] = 1;
                 }
             });
-
+    
             // Send the input_data array to the server using Fetch API
             fetch('/predict', {
                 method: 'POST',
@@ -168,16 +168,20 @@
                 },
                 body: JSON.stringify({ input_data })
             })
+            console.log(JSON.stringify({ input_data }))
             .then(response => response.json())
             .then(data => {
-                // Handle the response from the server (e.g., update UI)
+                // Handle the response from the server
                 console.log('Prediction:', data.predicted_prognosis);
+    
+                // Redirect to the result.html page with the predicted result
+                window.location.href = '/result/' + data.predicted_prognosis;
             })
             .catch(error => {
                 // Handle errors
                 console.error('Error:', error);
             });
         }
-    </script>
+    </script>    
 </body>
 </html>
