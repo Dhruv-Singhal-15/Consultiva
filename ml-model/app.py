@@ -29,7 +29,7 @@ def predict():
         response = {
             "predicted_disease": predicted_disease
         }
-        logging(response)
+        #logging(response)
         return jsonify(response),200
 
     except Exception as e:
