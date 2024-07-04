@@ -1,38 +1,30 @@
 import express from 'express';
+import axios from 'axios';
+import cors from 'cors';
 import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
-import path from 'path';
-import axios from 'axios'; 
-
-import predictRouter from './routes/predict';
 
 const app = express();
-const port = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5001;
 
 // Middleware
+app.use(express.json())
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// MongoDB Configuration
-mongoose.connect('mongodb://localhost:27017/your_database_name', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
+// Route to interact with Flask API
+app.post('/predict', async (req, res) => {
+    try {
+        const response = await axios.post('http://localhost:5002/predict', {
+            input: req.body.input
+        });
+        res.json(response.data);
+    } catch (error) {
+        res.status(500).json({ error });
+    }
 });
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', () => {
-    console.log('Connected to MongoDB');
-});
-
-// API Routes
-app.use('/api/predict', predictRouter);
-
-// Serve React Frontend 
-
 
 // Start the server
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });

@@ -49,6 +49,7 @@ voting_clf = VotingClassifier(estimators=[
 voting_clf.fit(X_train, y_train)
 
 joblib.dump(voting_clf, 'model.joblib')
+joblib.dump(label_encoder, 'label_encoder.joblib')
 
 # ---------------- following is code for the model to run as a stand alone prediction app ----------------
 
