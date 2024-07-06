@@ -47,7 +47,10 @@ const Predict = () => {
         const inputArray = selectedSymptoms.map(symptom => symptom ? 1 : 0);
         try {
             const response = await axios.post('http://localhost:5001/predict', { input: inputArray });
-            setPrediction(response.data);
+            //console.log(response.data);
+            setPrediction(response.data.predicted_disease);
+            //console.log('Prediction:', response.data.predicted_disease);  
+
         } catch (error) {
             console.error('Error predicting disease:', error);
         }
@@ -74,8 +77,7 @@ const Predict = () => {
             {prediction && (
                 <div>
                     <h2>Prediction Result</h2>
-                    <p><strong>Disease:</strong> {prediction["Predicted Disease"]}</p>
-                    <p><strong>Description:</strong> {prediction["Disease Description"]}</p>
+                    <p><strong>Disease:</strong> {prediction}</p>
                 </div>
             )}
         </div>

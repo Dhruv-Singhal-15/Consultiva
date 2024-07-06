@@ -15,10 +15,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Route to interact with Flask API
 app.post('/predict', async (req, res) => {
     try {
-        const response = await axios.post('http://localhost:5002/predict', {
-            input: req.body.input
-        });
-        res.json(response.data);
+        //console.log(req.body.input);
+        const inputSymptoms = req.body.input; 
+        const response = await axios.post('http://localhost:5002/predict', { input: inputSymptoms });
+        //res.json(response.data);
     } catch (error) {
         res.status(500).json({ error });
     }
