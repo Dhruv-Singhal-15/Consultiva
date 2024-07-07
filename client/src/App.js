@@ -1,10 +1,9 @@
 import './App.css';
-import Predict from './components/Predict';
+import Predict from './components/Predict/Predict';
 
 function App() {
   return (
     <>
-    <h1>hello</h1>
     <Predict />
     </>
   );

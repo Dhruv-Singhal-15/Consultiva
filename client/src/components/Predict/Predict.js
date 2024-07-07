@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Predict.css'; 
 import axios from 'axios';
 
 const symptoms = [
@@ -47,7 +48,7 @@ const Predict = () => {
         const inputArray = selectedSymptoms.map(symptom => symptom ? 1 : 0);
         try {
             const response = await axios.post('http://localhost:5001/predict', { input: inputArray });
-            //console.log(response.data);
+            console.log(response.data);
             setPrediction(response.data.predicted_disease);
             //console.log('Prediction:', response.data.predicted_disease);  
 
@@ -57,25 +58,25 @@ const Predict = () => {
     };
 
     return (
-        <div>
+        <div className="predict-container">
             <h1>Disease Prediction</h1>
-            <form onSubmit={handleSubmit}>
+            <form className="predict-form" onSubmit={handleSubmit}>
                 {symptoms.map((symptom, index) => (
-                    <div key={index}>
+                    <div className="symptom-checkbox" key={index}>
                         <label>
                             <input
                                 type="checkbox"
                                 checked={selectedSymptoms[index]}
                                 onChange={() => handleChange(index)}
                             />
-                            {symptom}
+                            {symptom.replace(/_/g, ' ')}
                         </label>
                     </div>
                 ))}
-                <button type="submit">Predict</button>
+                <button className="predict-button" type="submit">Predict</button>
             </form>
             {prediction && (
-                <div>
+                <div className="prediction-result">
                     <h2>Prediction Result</h2>
                     <p><strong>Disease:</strong> {prediction}</p>
                 </div>
