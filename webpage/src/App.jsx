@@ -1,66 +1,43 @@
-import React from 'react';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import * as Boxicons from 'react-icons/bi';
+import "./assets/css/pagecss/Header1.css";
 
-import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import "./assets/css/pagecss/Login.css";
+import * as Boxicons from "react-icons/bi";
+import Home from "./pages/Home";
+
+import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import "./components/main.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Doctor from './components/Doctor';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee, faHeart } from '@fortawesome/free-solid-svg-icons';
-
+import Doctor from "./components/Doctor";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import TopBar from './components/TopBar';
-//import About from "./components/About";
-//import Services from "./components/Services";
-import Departments from "./components/Departments";
-import Footer from "./components/Footer";
-import Contact from './components/Contact';
-import Gallery from './components/Gallery';
-import FAQ from './components/Faq';
-import Testimonials from './components/Testimonials';
-import Services from './components/Services';
-import Counts from './components/Counts';
-import About from './components/About';
-import WhyUs from './components/WhyUs';
-
-
+import Login from "./pages/Login";
+import Nopage from "./pages/Nopage";
+import Dasboard from "./pages/Dasboard";
+import Header1 from "./pages/Header1";
 
 function App() {
   return (
-    <div>
-    <TopBar/>
-      <Navbar />
-      
-      <Hero/>
-      <WhyUs/>
-      <About/>
-      <Counts/>
-      <Services/>
-      
-      <Departments/>
-      <Doctor/>
-      <FAQ/>
-      <Testimonials/>
-      <Gallery/>
-
-
-
-
-      
-      
-
-      
-      <Contact/>
-      <Footer />
-      
-    </div>
+    <>
+      <div>
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/dashboard" element={<Dasboard />} />
+            <Route path="/header1" element={<Header1 />} />
+            <Route path="*" element={<Nopage />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </>
   );
 }
 
