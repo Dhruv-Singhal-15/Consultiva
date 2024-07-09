@@ -21,6 +21,10 @@ import Login from "./pages/Login";
 import Nopage from "./pages/Nopage";
 import Dasboard from "./pages/Dasboard";
 import Header1 from "./pages/Header1";
+import Prediction from "./pages/Prediction";
+import BMI from "./pages/Bmi";
+import DueDateCal from "./pages/DueDateCal";
+import SmokingCostCalculator from "./pages/SmokingCostCalculator";
 
 function App() {
   return (
@@ -33,6 +37,10 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dasboard />} />
             <Route path="/header1" element={<Header1 />} />
+            <Route path="/prediction" element={<Prediction />} />
+            <Route path="/bmi" element={<BMI />} />
+            <Route path="/duedate" element={<DueDateCal />} />
+            <Route path="/smokingcost" element={<SmokingCostCalculator />} />
             <Route path="*" element={<Nopage />} />
           </Routes>
         </BrowserRouter>

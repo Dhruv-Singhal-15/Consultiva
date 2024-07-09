@@ -49,23 +49,18 @@ function Navbar() {
               </a>
               <ul>
                 <li>
-                  <a href="https://www.nhlbi.nih.gov/health/educational/lose_wt/BMI/bmicalc.htm">
+                  <a href="/bmi" target="_blank">
                     BMI Calculator
                   </a>
                 </li>
 
                 <li>
-                  <a href="https://www.calculator.net/calorie-calculator.html">
-                    Calorie Calculator
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.nhs.uk/pregnancy/finding-out/due-date-calculator/">
+                  <a href="./duedate" target="_blank">
                     Due Date Calculator
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.adityabirlacapital.com/healthinsurance/active-together/health-tools/cost-of-smoking/">
+                  <a href="./smokingcost" target="_blank">
                     Cost of Smoking Calculator
                   </a>
                 </li>
