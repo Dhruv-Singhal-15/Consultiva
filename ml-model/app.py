@@ -9,8 +9,8 @@ from sklearn.preprocessing import LabelEncoder
 app = Flask(__name__)
 CORS(app)
 
-label_encoder = joblib.load("D:\Minor\ml-model\label_encoder.joblib")
-model = joblib.load("D:\Minor\ml-model\model.joblib")
+label_encoder = joblib.load("./label_encoder.joblib")
+model = joblib.load("./model.joblib")
 
 warnings.filterwarnings("ignore", category=UserWarning, module="sklearn")
 logging.basicConfig(level=logging.DEBUG)

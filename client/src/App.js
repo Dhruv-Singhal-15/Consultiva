@@ -1,12 +1,16 @@
-import './App.css';
-import Predict from './components/Predict/Predict';
 
-function App() {
+import Predict from './components/Predict.js';
+//import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+
+
+const App = () => {
   return (
     <>
-    <Predict />
+    <Predict /> 
     </>
   );
-}
+};
+
 
 export default App;
