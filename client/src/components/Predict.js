@@ -78,7 +78,7 @@ const Predict = () => {
             {prediction && (
                 <div className="prediction-result">
                     <h2>Prediction Result</h2>
-                    <p><strong>Disease:</strong> {prediction}</p>
+                    <p><strong>Disease:</strong> {prediction.replace(/_/g, ' ')}</p>
                 </div>
             )}
         </div>
