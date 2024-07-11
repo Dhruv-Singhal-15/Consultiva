@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+
 import "../assets/css/pagecss/Prediction.css";
+
 import axios from "axios";
 
 const symptoms = [
@@ -165,31 +167,37 @@ const Prediction = () => {
   };
 
   return (
-    <div className="predict-container">
+    <div className="conatiner container-fluid">
       <h1>Disease Prediction</h1>
-      <form className="predict-form" onSubmit={handleSubmit}>
-        {symptoms.map((symptom, index) => (
-          <div className="symptom-checkbox" key={index}>
-            <label>
-              <input
-                type="checkbox"
-                checked={selectedSymptoms[index]}
-                onChange={() => handleChange(index)}
-              />
-              {symptom.replace(/_/g, " ")}
-            </label>
-          </div>
-        ))}
-        <button className="predict-button" type="submit">
-          Predict
-        </button>
-      </form>
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <form className="predict-form" onSubmit={handleSubmit}>
+            {symptoms.map((symptom, index) => (
+              <div className="symptom-checkbox" key={index}>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={selectedSymptoms[index]}
+                    onChange={() => handleChange(index)}
+                  />
+                  {symptom.replace(/_/g, " ")}
+                </label>
+              </div>
+            ))}
+            <button className="btn btn-primary" type="submit">
+              Predict
+            </button>
+          </form>
+        </div>
+      </div>
+
       {prediction && (
         <div className="prediction-result">
           <h2>Prediction Result</h2>
           <p>
             <strong>Disease:</strong> {prediction}
           </p>
+          <br />
         </div>
       )}
     </div>

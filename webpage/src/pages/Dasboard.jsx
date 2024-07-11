@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header1 from "./Header1";
+import Prediction from "./Prediction";
 import Footer from "../components/Footer";
 
 const Dashboard = () => {
@@ -31,6 +32,8 @@ const Dashboard = () => {
           <p> welcome back to consultiva</p>
         </div>
       </div>
+      <Prediction />
+      <br />
 
       <Footer />
     </>
