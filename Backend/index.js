@@ -6,10 +6,9 @@ require("./db/conn");
 
 const userdb = require("./model/userSchema");
 
-/*const clientid =
+const clientid =
   "238877709237-8c63tnd04jn43ifdgd658kgvavp35m5r.apps.googleusercontent.com";
 const clientsecret = "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";
-*/
 
 const PORT = 8000;
 
