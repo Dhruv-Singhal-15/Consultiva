@@ -32,9 +32,11 @@ const Header1 = () => {
       <header>
         <nav>
           <div className="left">
-            <h1 className="header1_h1">
-              <span>Hi</span> {userdata?.displayName}
-            </h1>
+            <a href="./dashboard">
+              <h1 className="header1_h1">
+                <span>Hi</span> {userdata?.displayName}
+              </h1>
+            </a>
           </div>
           <div className="right">
             <ul>

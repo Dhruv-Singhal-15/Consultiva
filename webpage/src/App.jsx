@@ -25,6 +25,8 @@ import Prediction from "./pages/Prediction";
 import BMI from "./pages/Bmi";
 import DueDateCal from "./pages/DueDateCal";
 import SmokingCostCalculator from "./pages/SmokingCostCalculator";
+import FindDoctor from "./components/FindDoctor";
+import Contact from "./components/Contact";
 
 function App() {
   return (
@@ -41,6 +43,8 @@ function App() {
             <Route path="/bmi" element={<BMI />} />
             <Route path="/duedate" element={<DueDateCal />} />
             <Route path="/smokingcost" element={<SmokingCostCalculator />} />
+            <Route path="/finddoctor" element={<FindDoctor />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<Nopage />} />
           </Routes>
         </BrowserRouter>

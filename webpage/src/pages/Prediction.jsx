@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "../assets/css/pagecss/Prediction.css";
 
 import axios from "axios";
+import Header1 from "./Header1";
 
 const symptoms = [
   "itching",
@@ -167,40 +168,43 @@ const Prediction = () => {
   };
 
   return (
-    <div className="conatiner container-fluid">
-      <h1>Disease Prediction</h1>
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <form className="predict-form" onSubmit={handleSubmit}>
-            {symptoms.map((symptom, index) => (
-              <div className="symptom-checkbox" key={index}>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={selectedSymptoms[index]}
-                    onChange={() => handleChange(index)}
-                  />
-                  {symptom.replace(/_/g, " ")}
-                </label>
-              </div>
-            ))}
-            <button className="btn btn-primary" type="submit">
-              Predict
-            </button>
-          </form>
+    <>
+      <Header1 />
+      <div className="conatiner container-fluid">
+        <h1>Disease Prediction</h1>
+        <div className="row justify-content-center">
+          <div className="col-md-6">
+            <form className="predict-form" onSubmit={handleSubmit}>
+              {symptoms.map((symptom, index) => (
+                <div className="symptom-checkbox" key={index}>
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={selectedSymptoms[index]}
+                      onChange={() => handleChange(index)}
+                    />
+                    {symptom.replace(/_/g, " ")}
+                  </label>
+                </div>
+              ))}
+              <button className="btn btn-primary" type="submit">
+                Predict
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
 
-      {prediction && (
-        <div className="prediction-result">
-          <h2>Prediction Result</h2>
-          <p>
-            <strong>Disease:</strong> {prediction}
-          </p>
-          <br />
-        </div>
-      )}
-    </div>
+        {prediction && (
+          <div className="prediction-result">
+            <h2>Prediction Result</h2>
+            <p>
+              <strong>Disease:</strong> {prediction}
+            </p>
+            <br />
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
