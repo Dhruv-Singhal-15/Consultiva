@@ -157,7 +157,8 @@ const Dashboard = () => {
                   Find the Nearby Hospital feature offer by us
                 </p>
                 <a
-                  href="#"
+                  href="./findhospital"
+                  target="_blank"
                   className="btn btn-primary"
                   style={{
                     display: "flex",

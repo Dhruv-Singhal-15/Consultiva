@@ -43,7 +43,8 @@ function App() {
             <Route path="/bmi" element={<BMI />} />
             <Route path="/duedate" element={<DueDateCal />} />
             <Route path="/smokingcost" element={<SmokingCostCalculator />} />
-            <Route path="/finddoctor" element={<FindDoctor />} />
+            <Route path="/findhospital" element={<FindDoctor />} />
+            <Route path="/index.html" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<Nopage />} />
           </Routes>
