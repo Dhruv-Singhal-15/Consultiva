@@ -66,8 +66,8 @@ const FindDoctorMap = () => {
       >
         <div>
           <Header1 />
-          <h1 className="text-center my-4">Find the Hospital</h1>
-          <div className="container">
+          <h1 className="text-center my-4">Find the Hospitals</h1>
+          <div className="container container-fluid">
             <div className="row justify-content-center">
               <div className="col-md-8">
                 <Autocomplete onLoad={onLoad} onPlaceChanged={onPlacesChanged}>

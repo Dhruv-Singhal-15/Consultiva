@@ -1724,6 +1724,11 @@ section {
   color: #444444;
 }
 
+#footer .social-links {
+  margin-top: 20px;
+  text-align: center;
+}
+
 #footer .social-links a {
   font-size: 18px;
   display: inline-block;
@@ -1731,7 +1736,7 @@ section {
   color: #fff;
   line-height: 1;
   padding: 8px 0;
-  margin-right: 4px;
+  margin: 0 5px;
   border-radius: 50%;
   text-align: center;
   width: 36px;
@@ -1744,6 +1749,31 @@ section {
   color: #fff;
   text-decoration: none;
 }
+
+@media (max-width: 768px) {
+  #footer .footer-top {
+    padding: 30px 0;
+  }
+
+  #footer .footer-top .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #footer .footer-top .col-lg-3 {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  #footer .footer-newsletter form {
+    width: 100%;
+  }
+
+  #footer .social-links {
+    margin-top: 10px;
+  }
+}
+
 /* styles.css */
 
 /* Adjust placeholder size based on input width */

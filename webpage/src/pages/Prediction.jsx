@@ -187,6 +187,7 @@ const Prediction = () => {
                   </label>
                 </div>
               ))}
+              <br />
               <button className="btn btn-primary" type="submit">
                 Predict
               </button>
@@ -195,11 +196,15 @@ const Prediction = () => {
         </div>
 
         {prediction && (
-          <div className="prediction-result">
-            <h2>Prediction Result</h2>
-            <p>
-              <strong>Disease:</strong> {prediction}
-            </p>
+          <div
+            className="container container-fluid"
+            style={{ textAlign: "center" }}
+          >
+            <br />
+            <h2 style={{ color: "green" }}>Prediction Result</h2>
+            <h4>
+              <strong style={{ color: "red" }}>Disease:</strong> {prediction}
+            </h4>
             <br />
           </div>
         )}

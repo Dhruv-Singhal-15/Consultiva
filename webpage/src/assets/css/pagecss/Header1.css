@@ -75,3 +75,42 @@ header nav .right ul .dropdown ul li a {
 .header1_h1 {
   color: white;
 }
+@media (max-width: 768px) {
+  /* Adjust styles for screens smaller than 768px (e.g., tablets and mobile devices) */
+  header nav .right ul {
+    display: none; /* Hide the main navigation */
+    flex-direction: column; /* Stack items vertically */
+    position: absolute;
+    top: 80px; /* Align below the header */
+    left: 0;
+    width: 100%;
+    background: #3291e6;
+    z-index: 1000;
+  }
+
+  header nav .right ul li {
+    margin-right: 0; /* Remove margin for stacked items */
+    width: 100%; /* Full width for dropdown items */
+    text-align: center; /* Center align text */
+  }
+
+  header nav .right ul li a {
+    padding: 15px 20px; /* Adjust padding for touch targets */
+    display: block; /* Display block for full clickable area */
+    color: white;
+    text-decoration: none;
+  }
+
+  header nav .right ul .dropdown ul {
+    position: static; /* Reset position for dropdown items */
+    display: none; /* Hide dropdown initially */
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 0;
+    width: auto; /* Auto width for dropdown */
+  }
+
+  header nav .right ul .dropdown:hover ul {
+    display: block; /* Show dropdown on hover */
+  }
+}
