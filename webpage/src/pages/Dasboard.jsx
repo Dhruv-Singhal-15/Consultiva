@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header1 from "./Header1";
 import Prediction from "./Prediction";
 import Footer from "../components/Footer";
@@ -98,7 +98,7 @@ const Dashboard = () => {
                 <div className="row">
                   <div className="col-md-4">
                     <div className="card">
-                      <a href="./bmi" target="_blank">
+                      <Link to="/bmi" target="_blank">
                         <button className="btn btn-primary">
                           <h5 className="card-title">
                             BMI
@@ -106,27 +106,27 @@ const Dashboard = () => {
                             Calculator
                           </h5>
                         </button>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="col-md-4">
                     <div className="card">
-                      <a href="./duedate" target="_blank">
+                      <Link to="/duedate" target="_blank">
                         <button className="btn btn1 btn-primary">
                           <h5 className="card-title">Due Date Calculator</h5>
                         </button>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="col-md-4">
                     <div className="card">
-                      <a href="./smokingcost" target="_blank">
+                      <Link to="/smokingcost" target="_blank">
                         <button className="btn btn1 btn-primary">
                           <h5 className="card-title">
                             Smoking Cost Calculator
                           </h5>
                         </button>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -156,8 +156,8 @@ const Dashboard = () => {
                 <p className="card-text">
                   Find the Nearby Hospital feature offer by us
                 </p>
-                <a
-                  href="./findhospital"
+                <Link
+                  to="/findhospital"
                   target="_blank"
                   className="btn btn-primary"
                   style={{
@@ -166,7 +166,7 @@ const Dashboard = () => {
                   }}
                 >
                   Locate Now
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -193,8 +193,8 @@ const Dashboard = () => {
                 <p className="card-text">
                   For any inquiries or support, please reach out to us
                 </p>
-                <a
-                  href="./contact"
+                <Link
+                  to="/contact"
                   target="_blank"
                   className="btn btn-primary"
                   style={{
@@ -203,7 +203,7 @@ const Dashboard = () => {
                   }}
                 >
                   Contact Us
-                </a>
+                </Link>
               </div>
             </div>
           </div>

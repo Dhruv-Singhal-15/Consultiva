@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "../assets/css/pagecss/Header1.css";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
@@ -32,11 +33,11 @@ const Header1 = () => {
       <header>
         <nav>
           <div className="left">
-            <a href="./dashboard">
+            <Link to="/dashboard">
               <h1 className="header1_h1">
                 <span>Hi</span> {userdata?.displayName}
               </h1>
-            </a>
+            </Link>
           </div>
           <div className="right">
             <ul>
@@ -44,25 +45,25 @@ const Header1 = () => {
                 <NavLink to="/">Home</NavLink>
               </li>
               <li className="dropdown">
-                <a href="#">
+                <Link to="#">
                   <span>Health Tool</span>
                   <i className="bi bi-chevron-down"></i>
-                </a>
+                </Link>
                 <ul>
                   <li>
-                    <a href="/bmi" target="_blank">
+                    <Link to="/bmi" target="_blank">
                       BMI Calculator
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="/duedate" target="_blank">
+                    <Link to="/duedate" target="_blank">
                       Due Date Calculator
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="/smokingcost" target="_blank">
+                    <Link to="/smokingcost" target="_blank">
                       Cost of Smoking Calculator
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>

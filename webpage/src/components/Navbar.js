@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useAuth0, User } from "@auth0/auth0-react";
 
 function Navbar() {
@@ -10,7 +11,7 @@ function Navbar() {
     <header id="header" className="fixed-top">
       <div className="container d-flex align-items-center">
         <h1 className="logo me-auto">
-          <a href="index.html">Consultiva</a>
+          <Link to="/home">Consultiva</Link>
         </h1>
         {/* Uncomment below if you prefer to use an image logo */}
         {/* <a href="index.html" className="logo me-auto"><img src="assets/img/logo.png" alt="" className="img-fluid" /></a> */}
