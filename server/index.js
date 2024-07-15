@@ -1,21 +1,35 @@
-import express from "express";
-import cors from "cors";
-import bodyParser from "body-parser";
-import mongoose from "mongoose";
-import predictRoute from "./routes/predictRoute.js";
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
+import mongoose from 'mongoose';
+import dotenv from "dotenv";
+
+import predictRoute from './routes/predictRoute.js';
+import userRoute from './routes/userRoute.js'
 
 const app = express();
+dotenv.config();
 const PORT = process.env.PORT || 5001;
 const CONNECTION_URL =
   "mongodb+srv://atinderkumar1111:12345@cluster0.didyxku.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 // Middleware
+app.use(express.json())
+app.use(cors({
+    origin: ["http://localhost:3000"], //need to specify the frontend server to use credentials
+    credentials: true, //to use http cookies
+}));
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
+app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //routes
+app.use('/predict',predictRoute);
+app.use('/auth',userRoute);
+
 app.use("/predict", predictRoute);
 
 //the server will start only when connection to database is true

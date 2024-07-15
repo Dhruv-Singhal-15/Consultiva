@@ -2,8 +2,8 @@ import express from 'express'
 
 import { predictDisease } from '../controllers/predictController.js';
 
-const router = express.Router();
+const router = express.Router()
 
-router.post('/',predictDisease);
+router.post('/',predictDisease)
 
 export default router;

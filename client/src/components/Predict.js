@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Predict.css'; 
+import '../styles/Predict.css'; 
 import axios from 'axios';
 
 const symptoms = [
@@ -48,10 +48,9 @@ const Predict = () => {
         const inputArray = selectedSymptoms.map(symptom => symptom ? 1 : 0);
         try {
             const response = await axios.post('http://localhost:5001/predict', { input: inputArray });
-            console.log(response.data);
+            //console.log(response.data);
             setPrediction(response.data.predicted_disease);
             //console.log('Prediction:', response.data.predicted_disease);  
-
         } catch (error) {
             console.error('Error predicting disease:', error);
         }
