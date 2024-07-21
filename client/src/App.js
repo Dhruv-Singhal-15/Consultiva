@@ -7,7 +7,7 @@ import Home from './components/Home.js';
 import ForgotPassword from './components/ForgotPassword.js'
 import ResetPassword from './components/ResetPassword.js';
 import './App.css'
-
+import Dashboard from './components/Dashboard.js';
 
 
 const App = () => {
@@ -21,7 +21,7 @@ const App = () => {
         <Route path='/Predict' element={<Predict />}></Route>
         <Route path='/forgotPassword' element={<ForgotPassword />}></Route>
         <Route path='/resetPassword/:token' element={<ResetPassword />}></Route>
-
+        <Route path='/dashboard' element={<Dashboard />}></Route>
       </Routes>
     </Router>
     </>

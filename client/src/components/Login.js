@@ -14,10 +14,12 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            Axios.post('http://localhost:5001/auth/login', { email, password })
+            Axios.post('http://localhost:5001/auth/login', { email, password },
+                {withCredentials: true}
+            )
                 .then(Response => {
                     if (Response.data.status) {
-                        navigate('/home');
+                        navigate('/dashboard');
                     }
                 });
         } catch (error) {

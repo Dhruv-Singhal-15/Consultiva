@@ -95,3 +95,22 @@ export const resetPassword = async (req,res) => {
         return res.json("invalid token") //token expired after 5 mins
     }
 }
+
+export const verifyUser = async(req,res,next)=>{
+    try{
+        const token = req.cookies.token;
+        if(!token){
+            return res.json({status: false, message: "no token"});
+        }
+        const decoded = jwt.verify(token,process.env.JWT_KEY);
+        next()
+    }
+    catch(err){
+        return res.json(err);
+    }
+}
+
+export const logoutUser = async (req,res) =>{
+    res.clearCookie('token')
+    return res.json({status:true})
+}
