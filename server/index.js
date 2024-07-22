@@ -16,11 +16,10 @@ const CONNECTION_URL  = process.env.CONNECTION_URL;
 // Middleware
 app.use(express.json())
 app.use(cors({
-    origin: ["http://localhost:3000"], //need to specify the frontend server to use credentials
+    origin: 'http://localhost:3000', //need to specify the frontend server to use credentials
     credentials: true, //to use http cookies
 }));
 app.use(express.json());
-app.use(cors());
 app.use(bodyParser.json());
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }));

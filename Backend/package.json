@@ -2,6 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> 01f85e1341134beaf0acb233e789a47303952d9a
   "scripts": {
     "start": "nodemon index.js"
   },

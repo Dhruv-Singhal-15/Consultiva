@@ -16,6 +16,8 @@ const ForgotPassword = () => {
                     if (Response.data.status) {
                         alert("Check your email for the reset link");
                         navigate('/resetPassword');
+                    }else{
+                        alert(Response.data.message);
                     }
                 });
         } catch (error) {
