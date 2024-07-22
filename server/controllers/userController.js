@@ -10,7 +10,7 @@ export const signupUser = async (req, res) => {
     const { username, email, password } = req.body
     const user = await User.findOne({ email })
     if (user) {
-        return res.json({ message: "user already existed" })
+        return res.json({ message: "User already existed" })
     }
 
     const hashpassword = await bcrypt.hash(password, 10)
@@ -50,7 +50,7 @@ export const forgotpass = async (req,res) =>{
     try{
         const user = await User.findOne({email})
         if(!user){
-            return res.json({message: "user not registered"})
+            return res.json({message: "Invalid Credentiials"})
         }
 
         const token = jwt.sign({id: user._id},process.env.JWT_KEY,{expiresIn:'5m'})
@@ -71,9 +71,9 @@ export const forgotpass = async (req,res) =>{
           
           transporter.sendMail(mailOptions, function(error, info){
             if (error) {
-                return res.json({message: "error sending mail :("})
+                return res.json({message: "Error sending mail :("})
             } else {
-                return res.json({status: true,message: "email sent :)"})
+                return res.json({status: true,message: "Email sent :)"})
             }
           });
           

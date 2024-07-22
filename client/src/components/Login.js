@@ -15,11 +15,14 @@ const Login = () => {
         e.preventDefault();
         try {
             Axios.post('http://localhost:5001/auth/login', { email, password },
-                {withCredentials: true}
+                { withCredentials: true }
             )
                 .then(Response => {
                     if (Response.data.status) {
                         navigate('/dashboard');
+                    }
+                    else {
+                        alert(Response.data.message);
                     }
                 });
         } catch (error) {
