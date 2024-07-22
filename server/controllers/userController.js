@@ -66,7 +66,7 @@ export const forgotpass = async (req,res) =>{
             from: 'dhruvsinghal1510@gmail.com',
             to: email,
             subject: 'Reset Password',
-            text: `This is your link to reset your password: http://localhost:3000/resetPassword/${token}`
+            text: `This is your link to reset your password (Valid only for 5 min!): http://localhost:3000/resetPassword/${token}`
           };
           
           transporter.sendMail(mailOptions, function(error, info){

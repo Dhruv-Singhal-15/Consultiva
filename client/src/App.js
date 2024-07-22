@@ -1,13 +1,13 @@
 
-import Predict from './components/Predict.js';
+import Predict from './components/Predict.jsx';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Signup from './components/Signup.js';
-import Login from './components/Login.js';
-import Home from './components/Home.js';
-import ForgotPassword from './components/ForgotPassword.js'
-import ResetPassword from './components/ResetPassword.js';
+import Signup from './components/Signup.jsx';
+import Login from './components/Login.jsx';
+import Home from './components/Home.jsx';
+import ForgotPassword from './components/ForgotPassword.jsx'
+import ResetPassword from './components/ResetPassword.jsx';
 import './App.css'
-import Dashboard from './components/Dashboard.js';
+import Dashboard from './components/Dashboard.jsx';
 
 
 const App = () => {
