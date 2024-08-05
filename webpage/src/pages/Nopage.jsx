@@ -14,8 +14,8 @@ function Nopage() {
       <Navbar />
       <div className="container conatiner-fuild">
         <div style={styles.container}>
-          <h1 style={styles.heading}>Error 404</h1>
-          <p style={styles.message}>Page Not Found</p>
+          <h1 style={styles.heading}>Error 403</h1>
+          <p style={styles.message}>Login to access</p>
           <Link to="/Home">
             <button className="btn appointment-btn">Go to Home</button>
           </Link>

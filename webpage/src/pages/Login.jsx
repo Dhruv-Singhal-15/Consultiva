@@ -1,5 +1,5 @@
 import React from "react";
-import "../assets/css/pagecss/Login.css";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const loginwithgoogle = () => {
@@ -15,7 +15,9 @@ const Login = () => {
             <input type="password" name="" id="" placeholder="password" />
             <button>Login</button>
             <p className="message">
-              Not Registerd? <a href="#">Create an account</a>
+              Not Registerd? <Link to="/register">Create an account</Link>
+              <br />
+              Forgot Password? <Link to="/forgotPassword">Click here</Link>
             </p>
           </form>
           <button className="login-with-google-btn" onClick={loginwithgoogle}>

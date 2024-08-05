@@ -18,6 +18,9 @@ import { faCoffee, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 import Nopage from "./pages/Nopage";
 import Dasboard from "./pages/Dasboard";
 import Header1 from "./pages/Header1";
@@ -37,6 +40,9 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path='/forgotPassword' element={<ForgotPassword />} />
+            <Route path='/resetPassword/:token' element={<ResetPassword />}></Route>
             <Route path="/dashboard" element={<Dasboard />} />
             <Route path="/header1" element={<Header1 />} />
             <Route path="/prediction" element={<Prediction />} />
