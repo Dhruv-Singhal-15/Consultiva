@@ -4,11 +4,12 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import Session from 'express-session';
+// import Session from 'express-session';
 import passport from 'passport';
 
 import predictRoute from "./routes/predictRoute.js"
 import userRoute from "./routes/userRoute.js"
+import protectedRoute from "./routes/protectedRoute.js"
 import './config/passport.js';
 // const userdb = require("./model/userSchema");
 // import {userdb} from "./model/userSchema";
@@ -40,21 +41,21 @@ dotenv.config();
 // });
 
 //session setup
-app.use(
-  Session({
-    secret: "12345678",
-    resave: false,
-    saveUninitialized: true,
-  })
-);
+// app.use(
+//   Session({
+//     secret: "12345678",
+//     resave: false,
+//     saveUninitialized: true,
+//   })
+// );
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //setup passport
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // passport.use(
 //   new OAuth2Strategy(
@@ -110,25 +111,26 @@ app.use(passport.session());
 //   })
 // );
 
-app.get("/login/sucess", async (req, res) => {
-  if (req.user) {
-    res.status(200).json({ message: "user Login", user: req.user });
-  } else {
-    res.status(400).json({ message: "Not Authorized" });
-  }
-});
+// app.get("/login/sucess", async (req, res) => {
+//   if (req.user) {
+//     res.status(200).json({ message: "user Login", user: req.user });
+//   } else {
+//     res.status(400).json({ message: "Not Authorized" });
+//   }
+// });
 
-app.get("/logout", (req, res, next) => {
-  req.logout(function (err) {
-    if (err) {
-      return next(err);
-    }
-    res.redirect("http://localhost:3000");
-  });
-});
+// app.get("/logout", (req, res, next) => {
+//   req.logout(function (err) {
+//     if (err) {
+//       return next(err);
+//     }
+//     res.redirect("http://localhost:3000");
+//   });
+// });
 
 app.use('/predict',predictRoute);
 app.use('/auth',userRoute);
+app.use('/protected',protectedRoute);
 
 mongoose
   .connect(DB)

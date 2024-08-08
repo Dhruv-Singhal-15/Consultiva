@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema(
+const UserSchema = new mongoose.Schema(
   {
     googleId: {
       type: String,
-      required: true,
       unique: true,
+      sparse: true,
     },
     displayName: {
       type: String,
@@ -13,8 +13,16 @@ const userSchema = new mongoose.Schema(
     },
     email: {
       type: String,
-      required: true,
+      required: function() {
+        return !this.googleId;
+      },
       unique: true,
+    },
+    password: {
+      type: String,
+      required: function() {
+        return !this.googleId;
+      },
     },
     image: {
       type: String,
@@ -23,6 +31,29 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const userdb = mongoose.model("users", userSchema);
+// const userSchema = new mongoose.Schema(
+//   {
+//     googleId: {
+//       type: String,
+//       required: true,
+//       unique: true,
+//     },
+//     displayName: {
+//       type: String,
+//       required: true,
+//     },
+//     email: {
+//       type: String,
+//       required: true,
+//       unique: true,
+//     },
+//     image: {
+//       type: String,
+//     },
+//   },
+//   { timestamps: true }
+// );
 
-export {userdb as User}
+const Userdb = mongoose.model("users", UserSchema);
+
+export {Userdb as User}

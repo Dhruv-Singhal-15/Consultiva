@@ -15,14 +15,14 @@ export const signupUser = async (req, res) => {
 
     const hashpassword = await bcrypt.hash(password, 10)
     const newUser = new User({
-        username, 
-        email, 
+        displayName: username, 
+        email: email, 
         password: hashpassword,
     })
 
     await newUser.save();
-    const token = jwt.sign({id: newUser.id}, process.env.JWT_KEY, {expiresIn:'1h'} )
-    res.cookie('token', token, {httpOnly: true, secure:true, maxAge: 360000})   
+    // const token = jwt.sign({id: newUser.id}, process.env.JWT_KEY, {expiresIn:'1h'} )
+    // res.cookie('token', token, {httpOnly: true, secure:true, maxAge: 360000})   
     return res.json({status: true, message: "User Created !"})
 
 }
@@ -36,9 +36,9 @@ export const loginUser = async (req, res) =>{
         return res.json({message: "User isn't registered"})
     }
 
-    if(user.googleId) {
-        return res.status(400).json({ msg: 'Use Google login' });
-    }
+    // if(user.googleId) {
+    //     return res.status(400).json({ msg: 'Use Google login' });
+    // }
 
     const validPassword = bcrypt.compare(password,user.password)
     if(!validPassword){
@@ -47,7 +47,7 @@ export const loginUser = async (req, res) =>{
 
     const token = jwt.sign({id: user.id}, process.env.JWT_KEY, {expiresIn: '1h'} ) 
     res.cookie('token', token, {httpOnly: true, maxAge: 360000}) //httponly makes sure that cannot login through javascript code
-    return res.json({status: true, message: "Login Successfully"})
+    return res.json({status: true, message: "Login Successfully", token, user:{displayName:user.displayName}})
 
 }
 

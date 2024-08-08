@@ -43,7 +43,7 @@
 
 .login-page {
   width: 360px;
-  /* padding: 8% 0 0; */
+  padding: 8% 0 0;
   margin: auto;
 }
 .form {
@@ -128,3 +128,5 @@
 .container .info span .fa {
   color: #ef3b3a;
 }
+
+

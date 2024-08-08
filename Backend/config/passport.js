@@ -1,7 +1,7 @@
 import passport from 'passport';
 import { User } from '../model/userSchema.js';
 import { Strategy as OAuth2Strategy } from 'passport-google-oauth2';
-// import jwt from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 
 const clientid = process.env.GOOGLE_CLIENT_ID;
 const clientsecret = process.env.GOOGLE_CLIENT_SECRET;
@@ -14,23 +14,22 @@ passport.use(
         callbackURL: "/auth/google/callback",
         scope: ["profile", "email"],
       },
-  
       async (accessToken, refreshToken, profile, done) => {
         try {
           let user = await User.findOne({ googleId: profile.id });
-  
           if (!user) {
             user = new User({
               googleId: profile.id,
               displayName: profile.displayName,
-              email: profile.emails[0].value,
+              // email: profile.emails[0].value,
               image: profile.photos[0].value,
             });
-  
             await user.save();
           }
+
+          const token = jwt.sign({id:user.id},process.env.JWT_KEY,{expiresIn:'1h'});
   
-          return done(null, user);
+          return done(null, {user,token});
         } catch (error) {
           return done(error, null);
         }
@@ -38,11 +37,12 @@ passport.use(
     )
   );
   
-  passport.serializeUser((user, done) => {
-    done(null, user);
-  });
+  // passport.serializeUser((user, done) => {
+  //   done(null, user);
+  // });
   
-  passport.deserializeUser((user, done) => {
-    done(null, user);
-  });
+  // passport.deserializeUser((user, done) => {
+  //   done(null, user);
+  // });
   
+  export default passport;
