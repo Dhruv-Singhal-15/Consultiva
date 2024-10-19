@@ -5,29 +5,29 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 
 const Header1 = () => {
-  const [userdata, setUserdata] = useState({});
-  console.log("response", userdata);
+  const [userdata, setUserdata] = useState("User");
+  // console.log("response", userdata);
 
-  const getUser = async () => {
-    try {
-      const response = await axios.get("http://localhost:8000/login/sucess", {
-        withCredentials: true,
-      });
+  // const getUser = async () => {
+  //   try {
+  //     const response = await axios.get("http://localhost:8000/login/sucess", {
+  //       withCredentials: true,
+  //     });
 
-      setUserdata(response.data.user);
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
+  //     setUserdata(response.data.user);
+  //   } catch (error) {
+  //     console.log("error", error);
+  //   }
+  // };
 
   // logoout
   const logout = () => {
-    window.open("http://localhost:8000/logout", "_self");
+    window.open("http://localhost:8000/auth/logout", "_self");
   };
 
-  useEffect(() => {
-    getUser();
-  }, []);
+  // useEffect(() => {
+  //   getUser();
+  // }, []);
   return (
     <>
       <header>

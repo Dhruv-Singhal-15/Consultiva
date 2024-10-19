@@ -1,28 +1,54 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Header1 from "./Header1";
-import Prediction from "./Prediction";
+// import Prediction from "./Prediction";
 import Footer from "../components/Footer";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-
-  const getUser = async () => {
-    try {
-      const response = await axios.get("http://localhost:8000/login/sucess", {
-        withCredentials: true,
-      });
-
-      console.log("response", response);
-    } catch (error) {
-      navigate("*");
-    }
-  };
+  const [userData, setUserData] = useState(null); 
 
   useEffect(() => {
-    getUser();
-  }, []);
+    const fetchData = async () => {
+        try {
+            // Make a GET request to the protected route
+            const response = await axios.get('http://localhost:8000/protected/dashboard', { withCredentials: true });
+            
+            // Check if the response indicates an unauthorized access
+            if (!response.data.status) {
+                alert(response.data.message); // Alert the user
+                navigate('/login'); // Redirect to the login page
+            } else {
+                // If successful, set the user data from the response
+                setUserData(response.data.user);
+            }
+        } catch (error) {
+            console.error('Error fetching dashboard data:', error);
+            alert('Something went wrong! Please try again.');
+        }
+    };
+
+    fetchData();
+}, []);
+
+  // const getUser = async () => {
+  //   try {
+  //     const response = await axios.get("http://localhost:8000/login/sucess", {
+  //       withCredentials: true,
+  //     });
+
+  //     console.log("response", response);
+  //   } catch (error) {
+  //     navigate("*");
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   getUser();
+  // }, []);
+
+
   return (
     <>
       <Header1 />

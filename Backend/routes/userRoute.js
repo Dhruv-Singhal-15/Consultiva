@@ -8,11 +8,11 @@ router.post('/signup', signupUser)
 router.post('/login', loginUser)
 router.post('/forgot-password', forgotpass)
 router.post('/reset-password/:token', resetPassword)
-router.get('/google', passport.authenticate('google',{scope: ['profile','email']}))
-router.get('/google/callback', passport.authenticate('google', { session: false }), (req, res) => {
-  res.cookie('token', req.user.token, { httpOnly: true});
-  res.redirect('http://localhost:3000/dashboard'); 
-});
+// router.get('/google', passport.authenticate('google',{scope: ['profile','email']}))
+// router.get('/google/callback', passport.authenticate('google', { session: false }), (req, res) => {
+//   res.cookie('token', req.user.token, { httpOnly: true});
+//   res.redirect('http://localhost:3000/dashboard'); 
+// });
 
 // router.get('/google/callback',passport.authenticate('google', {
 //         successRedirect: "http://localhost:3000/dashboard",

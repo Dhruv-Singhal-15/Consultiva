@@ -10,7 +10,7 @@ export const signupUser = async (req, res) => {
     const { username, email, password } = req.body
     const user = await User.findOne({ email })
     if (user) {
-        return res.status(400).json({ message: "User already existed" })
+        return res.status(400).json({ message: "User mail already exists !" })
     }
 
     const hashpassword = await bcrypt.hash(password, 10)
@@ -23,14 +23,14 @@ export const signupUser = async (req, res) => {
     await newUser.save();
     // const token = jwt.sign({id: newUser.id}, process.env.JWT_KEY, {expiresIn:'1h'} )
     // res.cookie('token', token, {httpOnly: true, secure:true, maxAge: 360000})   
-    return res.json({status: true, message: "User Created !"})
+    return res.json({status: true,message: "User Created !"})
 
 }
 
 
 export const loginUser = async (req, res) =>{
     const {email,password} = req.body;
-    console.log(req.body);
+    console.log("tried to login with ", req.body);
     const user = await User.findOne({email})
     if(!user){
         return res.json({message: "User isn't registered"})
@@ -40,12 +40,15 @@ export const loginUser = async (req, res) =>{
     //     return res.status(400).json({ msg: 'Use Google login' });
     // }
 
-    const validPassword = bcrypt.compare(password,user.password)
+    const validPassword = await bcrypt.compare(password,user.password)
     if(!validPassword){
+        console.log("Incorrect password");
         return res.json({message: "Password is incorrect!"})
+    }else{
+        console.log("correct password");
     }
 
-    const token = jwt.sign({id: user.id}, process.env.JWT_KEY, {expiresIn: '1h'} ) 
+    const token = jwt.sign({id: user._id}, process.env.JWT_KEY, {expiresIn: '1h'} ) 
     res.cookie('token', token, {httpOnly: true, maxAge: 360000}) //httponly makes sure that cannot login through javascript code
     return res.json({status: true, message: "Login Successfully", token, user:{displayName:user.displayName}})
 
@@ -117,9 +120,11 @@ export const verifyUser = async(req,res,next)=>{
         }
         const decoded = jwt.verify(token,process.env.JWT_KEY);
         req.user = await User.findById(decoded.id);
+        // console.log("user found!!(inside verifyUser)");
         next()
     }
     catch(err){
+        console.log("error in verifyUser");
         return res.json(err);
     }
 }

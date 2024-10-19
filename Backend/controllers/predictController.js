@@ -4,7 +4,7 @@ export const predictDisease = async (req, res) => {
   try {
     //console.log(req.body.input);
     const inputSymptoms = req.body.input;
-    const response = await axios.post("http://localhost:5002/predict", {
+    const response = await axios.post("http://localhost:5000/predict", {
       input: inputSymptoms,
     });
     res.json(response.data);

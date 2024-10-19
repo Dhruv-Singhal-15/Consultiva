@@ -57,7 +57,7 @@ const Prediction = () => {
       });
       console.log(response.data);
       setPrediction(response.data.predicted_disease);
-      //console.log('Prediction:', response.data.predicted_disease);
+      console.log('Prediction:', response.data.predicted_disease);
     } catch (error) {
       console.error("Error predicting disease:", error);
     }

@@ -13,14 +13,19 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            Axios.post('http://localhost:8000/auth/signup', { username, email, password })
-                .then(Response => {
-                    if (Response.data.status) {
+            const response = await Axios.post('http://localhost:8000/auth/signup', { username, email, password });
+                // .then(Response => {
+                    if (response.data.status) {
+                        alert(response.data.message);
                         navigate('/login');
                     }
-                });
+                // });
         } catch (error) {
-            console.error('Registration failed', error);
+            if (error.response && error.response.status === 400) {
+                alert(error.response.data.message); 
+            } else {
+                console.error('Registration failed', error);
+            }
         }
     };
 

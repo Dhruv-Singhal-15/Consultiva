@@ -5,12 +5,12 @@ import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 // import Session from 'express-session';
-import passport from 'passport';
+// import passport from 'passport';
 
 import predictRoute from "./routes/predictRoute.js"
 import userRoute from "./routes/userRoute.js"
 import protectedRoute from "./routes/protectedRoute.js"
-import './config/passport.js';
+// import './config/passport.js';
 // const userdb = require("./model/userSchema");
 // import {userdb} from "./model/userSchema";
 // const clientid =

@@ -31,9 +31,9 @@ const Login = () => {
     }
   };
 
-  const loginwithgoogle = () => {
-    window.open("http://localhost:8000/auth/google/callback", "_self");
-  };
+  // const loginwithgoogle = () => {
+  //   window.open("http://localhost:8000/auth/google/callback", "_self");
+  // };
 
   return (
     <>
@@ -61,9 +61,9 @@ const Login = () => {
               Forgot Password? <Link to="/forgotPassword">Click here</Link>
             </p>
           </form>
-          <button className="login-with-google-btn" onClick={loginwithgoogle}>
+          {/* <button className="login-with-google-btn" onClick={loginwithgoogle}>
             Sign In With Google
-          </button>
+          </button> */}
         </div>
       </div>
     </>
